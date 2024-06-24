@@ -3,7 +3,15 @@ function init() {
 }
 async function getCustomers() {
   const url = URL_SERVER + "/customer";
-  let reponse = await fetch(url);
+  let configLogin = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: sessionStorage.token,
+    },
+  };
+
+  let reponse = await fetch(url, configLogin);
   let data = await reponse.json();
 
   return data;
@@ -26,7 +34,13 @@ async function onClickEliminar(id) {
   if (!response) {
     return;
   }
-  await fetch(url, { method: "DELETE" });
+  await fetch(url, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: sessionStorage.token,
+    },
+  });
   renderCustomers();
 
   console.log(id);

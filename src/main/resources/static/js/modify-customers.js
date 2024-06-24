@@ -38,6 +38,7 @@ async function create(customer) {
         method: "PUT",
         headers: {
           "Content-Type": "application/json", // Especifica el tipo de contenido
+          Authorization: sessionStorage.token,
         },
         body: JSON.stringify(customer),
       });
@@ -57,6 +58,7 @@ async function create(customer) {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Especifica el tipo de contenido
+        Authorization: sessionStorage.token,
       },
       body: JSON.stringify(customer),
     });
